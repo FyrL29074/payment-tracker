@@ -7,7 +7,7 @@ object DateFormatter {
 
     fun format(createdDate: Int?): String {
         if (createdDate == null) {
-            return ""
+            return "Unknown date"
         }
 
         val timestamp = createdDate * 1000L
