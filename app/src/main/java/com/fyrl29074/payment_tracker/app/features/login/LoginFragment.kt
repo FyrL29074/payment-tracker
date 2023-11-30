@@ -7,21 +7,19 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.fyrl29074.payment_tracker.R
-import com.fyrl29074.payment_tracker.app.BaseFragment
+import com.fyrl29074.payment_tracker.app.base.BaseFragment
 import com.fyrl29074.payment_tracker.app.State
 import com.fyrl29074.payment_tracker.databinding.FragmentLoginBinding
 import com.fyrl29074.payment_tracker.utils.Const
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override val inflater: (LayoutInflater, ViewGroup?, Boolean) -> FragmentLoginBinding
         get() = FragmentLoginBinding::inflate
 
-    // add di Koin and uncomment it
-//    private val viewModel: LoginViewModel by viewModel()
-
-    private lateinit var viewModel: LoginViewModel
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun initUI() {
         binding.apply {

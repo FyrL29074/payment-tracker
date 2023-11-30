@@ -1,4 +1,4 @@
-package com.fyrl29074.payment_tracker.app
+package com.fyrl29074.payment_tracker.app.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

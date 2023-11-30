@@ -1,4 +1,4 @@
-package com.fyrl29074.payment_tracker.app
+package com.fyrl29074.payment_tracker.app.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

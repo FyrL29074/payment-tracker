@@ -59,4 +59,8 @@ dependencies {
     val navVersion = "2.7.5"
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    // Koin for Android
+    val koinVersion = "3.4.0"
+    implementation("io.insert-koin:koin-android:$koinVersion")
 }
