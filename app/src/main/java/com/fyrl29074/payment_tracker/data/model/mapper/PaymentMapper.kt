@@ -9,7 +9,7 @@ object PaymentMapper {
             id = dto.id,
             title =  dto.title,
             amount = dto.amount,
-            created = dto.created,
+            creationDate = dto.creationDate,
         )
     }
 }

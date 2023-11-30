@@ -1,6 +1,6 @@
 package com.fyrl29074.payment_tracker.data.repository
 
-import com.fyrl29074.payment_tracker.CustomException.InvalidTokenException
+import com.fyrl29074.payment_tracker.utils.CustomException.InvalidTokenException
 import com.fyrl29074.payment_tracker.data.RetrofitService
 import com.fyrl29074.payment_tracker.data.model.LoginBody
 import com.fyrl29074.payment_tracker.data.model.mapper.PaymentMapper
