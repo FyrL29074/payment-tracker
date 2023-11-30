@@ -7,18 +7,30 @@ import com.fyrl29074.payment_tracker.data.model.mapper.PaymentMapper
 import com.fyrl29074.payment_tracker.domain.model.Payment
 import com.fyrl29074.payment_tracker.domain.model.Token
 import com.fyrl29074.payment_tracker.domain.repository.RestRepository
+import retrofit2.HttpException
 
-class RestRepositoryImpl: RestRepository {
+class RestRepositoryImpl : RestRepository {
 
     override suspend fun login(login: String, password: String): Token {
         val loginBody = LoginBody(login, password)
         val response = RetrofitService.mainApi.login(loginBody)
 
         if (!response.isSuccessful || response.body() == null) {
-            throw InvalidTokenException(message = response.message())
+            throw HttpException(response)
         }
 
-        return Token(response.body()!!.response.token)
+        val body = response.body()!!
+        when (body.success) {
+            "true" -> {
+                return Token(body.response?.token ?: "")
+            }
+
+            "false" -> {
+                throw InvalidTokenException(message = body.error?.errorMsg ?: response.message())
+            }
+        }
+
+        throw Exception(response.message())
     }
 
     override suspend fun getPayments(token: String): List<Payment> {
@@ -28,10 +40,19 @@ class RestRepositoryImpl: RestRepository {
             throw InvalidTokenException(message = response.message())
         }
 
-        val payments = response.body()!!.payments.map { dto ->
-            PaymentMapper.map(dto)
+        val body = response.body()!!
+        when (body.success) {
+            "true" -> {
+                if (body.payments != null) {
+                    return body.payments.map { dto -> PaymentMapper.map(dto) }
+                }
+            }
+
+            "false" -> {
+                throw InvalidTokenException(message = body.error?.errorMsg ?: response.message())
+            }
         }
 
-        return payments
+        throw Exception(response.message())
     }
 }

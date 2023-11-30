@@ -66,7 +66,6 @@ class PaymentsFragment : BaseFragment<FragmentPaymentsBinding>() {
 
                     State.TokenError -> {
                         findNavController().navigate(R.id.login_fragment)
-                        findNavController().popBackStack(R.id.login_fragment, true)
                         Toast.makeText(
                             requireContext(),
                             Const.INVALID_TOKEN_ERROR,
@@ -76,18 +75,9 @@ class PaymentsFragment : BaseFragment<FragmentPaymentsBinding>() {
 
                     State.Success -> {
                         findNavController().navigate(R.id.login_fragment)
-                        findNavController().popBackStack(R.id.login_fragment, true)
                         Toast.makeText(
                             requireContext(),
                             Const.LOGOUT_SUCCESS,
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    else -> {
-                        Toast.makeText(
-                            requireContext(),
-                            Const.UNKNOWN_STATE_ERROR,
                             Toast.LENGTH_SHORT
                         ).show()
                     }

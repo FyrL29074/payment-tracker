@@ -33,6 +33,7 @@ class PaymentsViewModel(
     }
 
     fun logout() {
+        _state.value = State.Loading
         logoutUseCase.execute()
         _state.value = State.Success
     }

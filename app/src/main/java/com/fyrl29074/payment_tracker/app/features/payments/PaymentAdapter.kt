@@ -3,6 +3,8 @@ package com.fyrl29074.payment_tracker.app.features.payments
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.fyrl29074.payment_tracker.app.formatter.AmountFormatter
+import com.fyrl29074.payment_tracker.app.formatter.DateFormatter
 import com.fyrl29074.payment_tracker.databinding.ItemPaymentBinding
 import com.fyrl29074.payment_tracker.domain.model.Payment
 
@@ -31,9 +33,9 @@ class PaymentAdapter : RecyclerView.Adapter<PaymentAdapter.PaymentViewHolder>() 
     inner class PaymentViewHolder(private val binding: ItemPaymentBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(payment: Payment) {
-            binding.title.text = payment.title
-            binding.amount.text = payment.amount.toString()
-            binding.creationDate.text = payment.creationDate.toString()
+            binding.title.text = payment.title ?: ""
+            binding.amount.text = AmountFormatter.format(payment.amount)
+            binding.creationDate.text = DateFormatter.format(payment.creationDate)
         }
     }
 }
