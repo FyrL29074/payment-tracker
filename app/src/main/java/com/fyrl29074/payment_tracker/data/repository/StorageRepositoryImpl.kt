@@ -16,6 +16,10 @@ class StorageRepositoryImpl(context: Context): StorageRepository {
         return sharedPreferences.getString(TOKEN_KEY, DEFAULT_TOKEN) ?: ""
     }
 
+    override fun clearToken() {
+        sharedPreferences.edit().remove(TOKEN_KEY).apply()
+    }
+
     companion object {
         private const val PREFS_NAME = "AppPreferences"
         private const val TOKEN_KEY = "token"
