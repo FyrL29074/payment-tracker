@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">payment-tracker</string>
-    <string name="login">Логин</string>
-    <string name="password">Пароль</string>
-    <string name="auth">Войти</string>
-    <string name="logout">Выйти из аккаунта</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="auth">Auth</string>
+    <string name="logout">Logout</string>
 </resources>

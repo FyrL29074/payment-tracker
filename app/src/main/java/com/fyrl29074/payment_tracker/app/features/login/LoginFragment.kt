@@ -35,6 +35,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.state.collect { state ->
                 when (state) {
+                    State.Waiting -> Unit
+
                     State.Loading -> {
                         disableUI()
                     }
